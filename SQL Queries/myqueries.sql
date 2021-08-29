@@ -11,3 +11,5 @@ INSERT INTO `instructors` (`first_name`,`last_name`) VALUES ('Sami', "Haddad" );
 SET @id = LAST_INSERT_ID();
 INSERT INTO `degrees` (`dname`,`dyear`, `earned_from`,`instructor_id`) VALUES ('MS in Computer Science ','2017','AUB', @id);
 INSERT INTO `degrees` (`dname`,`dyear`, `earned_from`,`instructor_id`) VALUES ('BS in Business','2014','LAU', @id);
+
+
