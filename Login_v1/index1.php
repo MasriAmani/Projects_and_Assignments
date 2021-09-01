@@ -36,7 +36,7 @@
 		}
 	}  
 	
-	  $_SESSION['error']= "Wrong username or password";
+	  $_SESSION['error']= "Wrong Email or Password!";
 	   header('location: index.php');
 	
 
