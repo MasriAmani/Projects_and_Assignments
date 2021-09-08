@@ -252,8 +252,8 @@ session_start();
 
    
         
-<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	  <script type="text/javascript"src="script.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript"src="js/script.js"></script>
 
     
     <!-- Footer Starts Here -->

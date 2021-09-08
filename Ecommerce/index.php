@@ -142,8 +142,8 @@ https://www.tooplate.com/view/2114-pixie
     </div>
     <!-- Subscribe Form Ends Here -->
 
-<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	  <script type="text/javascript"src="script.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript"src="js/script.js"></script>
 
     
     <!-- Footer Starts Here -->
