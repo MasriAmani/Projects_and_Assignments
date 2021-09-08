@@ -16,7 +16,7 @@ if (isset($_POST["password"]) and $_POST["password"] !="")
 		die("Try again next time 2");
 	}
 $hash = hash('sha256', $password);
-$sql1="Select * from users where email=? and password=?"; #Check if the email already exists in the database
+$sql1="Select * from users where email=? and password=?"; #Check if the email and password exists together in the database
 $stmt1 = $connection->prepare($sql1);
 $stmt1->bind_param("ss",$email,$hash);
 $stmt1->execute();
@@ -48,7 +48,8 @@ else{
       $result = $stmt2->get_result();
       $row1 = $result->fetch_assoc();
 	  if(empty($row1)){
-	   header('location: createstore.php');}
+	   header('location: createstore.php');}      // if he hasn't created a store yet he goes to the createstore page 
+	                                               //else he goes to homestore page where he can view his products,update them or add new products
 	   else {
 		$_SESSION["store_id"] =$row1["id"];
 	   header('location: homestore.php');}
