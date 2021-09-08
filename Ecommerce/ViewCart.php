@@ -94,7 +94,19 @@ session_start();
 				   <?php
 				   
                    include "connection.php";
-                              $orderid = $_GET["orderid"];
+				      
+                             
+							    
+							   $custid = $_GET["custid"] ;
+							    $orderid = $_GET["orderid"];
+								 $_SESSION["orderid"]= $orderid;
+							$sql1="Select * from customer_order where customer_id =$custid ;";
+                             $stmt1 = $connection->prepare($sql1);
+				             $stmt1->execute();
+                             $result1 = $stmt1->get_result();
+							 $row1 = $result1->fetch_assoc();
+								
+								if ($row1["started"] != 0){
 				            $sql="Select * from products_orders where order_id =$orderid ;";
                              $stmt = $connection->prepare($sql);
 				             $stmt->execute();
@@ -126,17 +138,21 @@ session_start();
 						  
                           
 					   
-					<?php } ?>
+								<?php }} ?>
 				   
                       </table>
 					  <br>
 					  <br>
 					  <div class ="row">
-					   <div class ="col-md-6">
-			           <h1> <a href="done.php" >Done shopping </a> <h1>
+					   
+					   <div class ="col-md-4" align="center">
+                       <h1> <a href="homecust.php" >Add More to Cart</a> <h1>
 					   </div>
-					   <div class ="col-md-6">
-                       <h1> <a href="homecust.php" >Purchase More</a> <h1>
+					   <div class ="col-md-4"align="center">
+			           <h1> <a href="Buy.php" >Buy </a> <h1>
+					   </div>
+					   <div class ="col-md-4" align="center">
+			           <h1> <a href="logout.php" >Logout </a> <h1>
 					   </div>
 					   </div>
 			  

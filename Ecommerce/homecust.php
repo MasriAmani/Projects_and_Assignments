@@ -48,7 +48,7 @@ https://www.tooplate.com/view/2114-pixie
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="homecust.php">Stores
@@ -111,7 +111,8 @@ https://www.tooplate.com/view/2114-pixie
                 <div class="featured-item" id ="a">
                 <?php echo $row["name"]; ?>
 				<a href= <?php echo "product.php?id=".$row["id"]."&custid=".$custid; ?>>
-				 --> Visit
+				 Visit <i class="fa fa-shopping-cart"></i>
+
 				 </a>
                 </div>
              

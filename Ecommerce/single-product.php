@@ -51,11 +51,7 @@ https://www.tooplate.com/view/2114-pixie
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="products.html">Stores
-                <span class="sr-only"></span>
-              </a>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
             </li>
@@ -117,7 +113,7 @@ https://www.tooplate.com/view/2114-pixie
               <h6><?php echo $price."$"; ?></h6>
                      <span><?php echo $quan."  left on stock" ; ?></span>
               <form action="addtocart.php" method="get">
-                <<select name="selquan" required>
+                <select name="selquan" required>
                     <option disabled selected value>Quantity</option>
 					<?php if ($quan ==0){ ?>
 					         <option>Item out of stock</option>

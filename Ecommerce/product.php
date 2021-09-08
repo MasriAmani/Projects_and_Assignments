@@ -87,8 +87,7 @@ https://www.tooplate.com/view/2114-pixie
             <div class="section-heading">
               <div class="line-dec"></div>
               <h1>Products </h1>
-			  
-			   <?php
+			  <?php
              include "connection.php";
 			 session_start();
 			  $custid = $_GET["custid"];
@@ -100,9 +99,14 @@ https://www.tooplate.com/view/2114-pixie
               
             if(!empty($row4) && $row4["started"]!= 0 ){
 				$id = $_SESSION['orderid'] ;
+				$custid = $_GET["custid"];
+				$_SESSION["custid"]= $custid ;
 				?>
 				
-                   <a href= <?php echo "ViewCart.php?orderid=".$id  ?> > View Cart </a>
+                   <a href= <?php echo "ViewCart.php?orderid=".$id."&custid=".$custid  ?> > View Cart </a>
+				  
+			<?php } ?>
+			 
             </div>
           </div>
          
@@ -115,13 +119,10 @@ https://www.tooplate.com/view/2114-pixie
 	      
 	   <div class="row posts">
 	   
-	        
-				  
-			<?php }
+	         
 			 
 			 
-			 
-			 
+			 <?php
 			 $id = $_GET["id"];
 			 $_SESSION["storeid"]=$id;
 			 $custid = $_GET["custid"];

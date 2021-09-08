@@ -53,7 +53,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -127,15 +127,15 @@ session_start();
 	                      echo $row["price"]."$";?> </td>
 						  <td align ="center">
 						   <a href= <?php echo "addquantity.php?id=".$row["id"]."&quan=".$row["quantity"]?>>
-						   +1 </a>
+						   <i class="fa fa-plus-circle"></i> </a>
 						  </td>
 						  <td align ="center">
 						   <a href=<?php echo "redquantity.php?id=".$row["id"]."&quan=".$row["quantity"]?>>
-						   -1</a> 
+						   <i class="fa fa-minus-circle"></i></a> 
 						  </td>
 						   <td align ="center">
 						   <a href=<?php echo "removeitem.php?id=".$row["id"]?>>
-						   Remove</a> 
+						   <i class="fa fa-trash"></i></a> 
 						  </td>
 						  </tr>
                           
