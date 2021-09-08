@@ -9,7 +9,7 @@ if(isset($_POST["store_name"]) && $_POST["store_name"] != "" && strlen($_POST["s
 }
 
 if(isset($_POST["phone2"]) && $_POST["phone2"] != "" ) {
-    $phone = $_POST["phone1"];
+    $phone = $_POST["phone2"];
 }else{
     die ("Enter a valid input");
 }

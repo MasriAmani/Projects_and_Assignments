@@ -81,14 +81,23 @@ https://www.tooplate.com/view/2114-pixie
                
 				 <ul class="slides">
 				<?php
-				include "connection.php";
+				   include "connection.php";
                    session_start();
-				  $id =$_GET["id"];
-				   $name =$_GET["name"];
-				   $img = $_GET["img"];
-				    $quan =$_GET["quan"];
-					 $price =$_GET["price"];
-					 $_SESSION['productid'] =$id;
+				   $id =$_GET["id"];
+				   
+				    $sql1="Select * from products where id=?"; #Check if the store name already exists in the database
+                    $stmt1 = $connection->prepare($sql1);
+                    $stmt1->bind_param("i",$id);
+                    $stmt1->execute();
+                    $result = $stmt1->get_result();
+                    $row = $result->fetch_assoc();
+				    $name =$row["name"];
+					$descrip =$row["description"];
+				    $img = $row["image"];
+				    $quan =$row["quantity"];
+					$price =$row["price"];
+					
+					$_SESSION['productid'] =$id;
 					 ?>
 					
                
@@ -105,6 +114,7 @@ https://www.tooplate.com/view/2114-pixie
           <div class="col-md-6">
             <div class="right-content">
               <h4><?php echo $name; ?></h4>
+			  <p><?php echo $descrip; ?></p>
               <h6><?php echo $price."$"; ?></h6>
                      <span><?php echo $quan."  left on stock" ; ?></span>
               <form action="addtocart.php" method="get">

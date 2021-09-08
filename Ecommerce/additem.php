@@ -89,16 +89,26 @@ session_start();
               <div class="row mt-5">
 				    <input
                       required
-                      minlength="3"
+                      minlength="5"
                       type="text"
                       name="product_name"
                       id="product_name"
-					  placeholder="Product Name(no spaces)"
+					  placeholder="Product Name"
                     />
 					
                   </div>
               
-			  
+			  <div class="row mt-5">
+				    <input
+                      required
+                      minlength="15"
+                      type="text"
+                      name="product_descrip"
+                      id="product_descrip"
+					  placeholder="Product Description"
+                    />
+					
+                  </div>
 			  
 			  <div class="row mt-5">
 			  Upload Product Image : </div>

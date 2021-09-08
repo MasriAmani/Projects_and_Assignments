@@ -113,7 +113,7 @@ https://www.tooplate.com/view/2114-pixie
 					   $price = $row["price"];
 					  ?>
             <div id="1" class="item new col-md-4">
-			   <a href= <?php echo "single-product.php?id=".$id."&name=".$name."&img=".$img."&quan=".$quan."&price=".$price ?> >
+			   <a href= <?php echo "single-product.php?id=".$id ?> >
 						    
                 <div class="featured-item">
 				<?php 
