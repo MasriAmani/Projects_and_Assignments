@@ -1,18 +1,22 @@
 $(document).ready(function(){
 
 
+ $("#signbutton").click(function myFunction(e) {
+ 
+
 
 
 var emailValid;
 var confirmPass;
+var passValid;
 var phoneValid;
 var fnameValid;
 var lnameValid;
 // Listeners
 
 
-$("#signbutton").click( function () {
   validateEmail();
+  validPassword();
   confirmPassword();
   validatePhone();
   validatefname();
@@ -20,32 +24,71 @@ $("#signbutton").click( function () {
   
 
   if(!phoneValid){
-	  $("#phone").alert();
+   $("#hide4").css("color", "red");
+    $("#hide4").html("Invalid Phone Number");
+	 
   }
-
+else {
+	  $("#hide4").html("");
+  }
   
+  
+if(!passValid){
+    $("#hide5").css("color", "red");
+    $("#hide5").html("Password must be more than 5 chars");
+  }
+  else {
+	  $("#hide5").html("");
+  }  
 
   if(!confirmPass){
-    $("#confirmPassword").alert();
+    $("#hide6").css("color", "red");
+    $("#hide6").html("Please Confirm Password");
   }
+  else {
+	  $("#hide6").html("");
+  }
+  
+  
+  
+  
 
   if(!emailValid){
-   $("#email").alert();
+    $("#hide3").css("color", "red");
+    $("#hide3").html("Invalid Email");
   }
+  else {
+	  $("#hide3").html("");
+  }
+  
 
   if(!fnameValid){
-     $("#first_name1").alert();
+   $("#hide1").css("color", "red");
+    $("#hide1").html("Invalid First Name");
   }
-
+  else {
+	  $("#hide1").html("");
+  }
+ 
+	     
   if(!lnameValid){
-	   $("#last_name1").alert();
+	$("#hide2").css("color", "red");
+    $("#hide2").html("Invalid Last Name");
      
   }
-
-  if (emailValid && confirmPass && phoneValid ) {
-    $("#subscribe").submit();
+else {
+	  $("#hide2").html("");
   }
-});
+
+
+ if ( !passValid || !fnameValid || !lnameValid || !emailValid || !confirmPass || !phoneValid ) {
+  
+	 e.preventDefault();
+     e.stopPropagation();
+     e.stopImmediatePropagation();
+
+  return false;}
+
 
 function validateEmail() {
 	 
@@ -59,9 +102,17 @@ function validateEmail() {
   }
 }
 
+function validPassword() {
+  passValid= false;
+  if ( $("#password").val().length > 5 ) {
+    passValid = true;
+  }
+}
+ 
+
 function confirmPassword() {
   confirmPass = false;
-  if ( $("#password").val() ==  $("#confirmPassword").val() &&  $("#password").val().length > 5) {
+  if ( $("#password").val() ==  $("#confirmPassword").val()) {
     confirmPass = true;
   }
 }
@@ -91,4 +142,42 @@ function validatelname(){
   }
 }
 
+}
+);
+
+$("#hombutton").click(function myFunction1(e) {
+
+var emailValid1;
+validateEmail1();
+ function validateEmail1() {
+	 
+  emailValid1= false;
+  if (
+    $("#email1").val().length > 5 &&
+     $("#email1").val().lastIndexOf(".") >  $("#email1").val().lastIndexOf("@") &&
+     $("#email1").val().lastIndexOf("@") != -1
+  ) {
+    emailValid1 = true;
+  }
+}
+
+ if(!emailValid1){
+    $("#hide11").css("color", "red");
+    $("#hide11").html("Invalid Email");
+  }
+  else {
+	  $("#hide11").html("");
+  }
+
+if ( !emailValid1 ) {
+  
+	 e.preventDefault();
+     e.stopPropagation();
+     e.stopImmediatePropagation();
+
+  return false;}
 });
+
+
+}
+);

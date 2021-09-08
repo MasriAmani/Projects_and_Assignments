@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
     <title>Ecommerce Website</title>
-
+	
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/tooplate-main.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+	
+
+    
+	
 <!--
 Tooplate 2114 Pixie
 https://www.tooplate.com/view/2114-pixie
@@ -82,20 +86,20 @@ session_start();
 <br>
 
    <div class="container">
-              <?php
+            <p style ="color :red">  <?php
                     if (!empty($_SESSION["flash"])){
                     $x = $_SESSION["flash"];
                     echo $x;
 					 $_SESSION["flash"]="";} 
                
-            ?>
-              <form id="subscribe" action="signup1.php" method="POST" >
+            ?></p>
+              <form id="subscribe" action="signup1.php" method="POST" align ="center">
               <div class="row mt-5">
                 <div class="col-md-6">
-				
+				 <p id="hide1" ></p>
                  <input
                       required
-                      minlength="3"
+                     
                       type="text"
                       name="first_name"
                       id="first_name1"
@@ -105,11 +109,11 @@ session_start();
                   </div>
               
                 <div class="col-md-6">
-                
+                 <p id="hide2" ></p>
                  <input
                     
                       required
-                      minlength="3"
+                     
                       type="text"
                       name="last_name"
                       id="last_name1"
@@ -121,7 +125,7 @@ session_start();
 			    
               <div class="row  mt-5">
                 <div class="col-md-6 "> 
- 				
+ 				  <p id="hide3" ></p>
                     <input
 
                       required
@@ -133,7 +137,7 @@ session_start();
 			
                   </div>
                 <div class="col-md-6">
-				
+				    <p id="hide4" ></p>
                     <input
 
                       required
@@ -148,7 +152,7 @@ session_start();
              
               <div class="row  mt-5">
                 <div class="col-md-6">
-				
+				 <p id="hide5" ></p>
                     <input
                    
                       required
@@ -159,6 +163,7 @@ session_start();
                     />
                   </div>
                 <div class="col-md-6">
+				<p id="hide6" ></p>
                       <input
                   
                       required
@@ -206,12 +211,16 @@ session_start();
 				
 		
               <div class="row  mt-5">
-			    <div class="col-md-6">
+			  <div class="col-md-12 align_self_center" >
                   <select name="city" required>
                     <option disabled selected value>Choose City</option>
-                    <option>Nabatieh</option>
                     <option>Beirut</option>
-                    <option>Jbeil</option>
+					<option>Jounieh</option>
+					<option>Jbeil</option>
+					<option>Tripoli</option>
+					<option>Bekaa</option>
+					<option>Nabatieh</option>
+                    
                   </select>
                   <div class="select-dropdown"></div>
                 </div>
@@ -220,6 +229,20 @@ session_start();
 			  <div class="col-md-12 align_self_center" >
                       <fieldset>
                 <button type="submit" id = "signbutton">Sign Up</button>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				</fieldset>
               </div>
 			  </div>
@@ -229,7 +252,8 @@ session_start();
 
    
         
-
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript"src="script.js"></script>
 
     
     <!-- Footer Starts Here -->
@@ -286,10 +310,16 @@ session_start();
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	  <script src="script.js"></script>
-    
+
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/isotope.js"></script>
+	
 
 
     <script language = "text/Javascript"> 

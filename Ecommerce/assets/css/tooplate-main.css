@@ -789,16 +789,16 @@ background-color :#1e8c6e!important;
  {
 
 background-color :#1e8c6e!important;
- width:relative!important;
+ width:40%!important;
  }
  
 }
 
 @media (min-width: 768px) {
 	#homrow
-{ width : 40%!important;
+{ width : 30%!important;
   margin-left :50px!important;
-  align: center!important;;
+ 
 
  }
  
@@ -820,7 +820,7 @@ background-color :#1e8c6e!important;
  {
 
 background-color :#1e8c6e!important;
- width:20%!important;
+ width:40%!important;
  }
 }
 

@@ -82,7 +82,7 @@ session_start();
 <h1 align="center" style="color: #1e8c6e;"> Create Your Store </h1>
 <br>
 
-   <div class="container">
+   <div class="container" align="center">
               <?php
                     if (!empty($_SESSION["flash"])){
                     $x = $_SESSION["flash"];
@@ -91,8 +91,10 @@ session_start();
 					} 
                
             ?>
-              <form id="subscribe" action="createstore1.php" method="POST" >
-              <div class="row mt-5">
+              <form id="createS" action="createstore1.php" method="POST" >
+              <div class="row" id ="homrow">
+				  <div class="col-md-12 align_self_center" >
+                      <fieldset>
 				    <input
                       required
                       minlength="3"
@@ -101,46 +103,61 @@ session_start();
                       id="store_name"
 					  placeholder="Store Name"
                     />
-					
+					</fieldset>
                   </div>
-              
+				  </div>
+              <br>
                 
-              <div class="row  mt-5">
+            <div class="row" id ="homrow">
+				  <div class="col-md-12 align_self_center" >
+                      <fieldset>
 				
                     <input
 
                       required
-                      id="phone1"
+                      id="phone2"
                       type="text"
-                      name="phone1"
+                      name="phone2"
 					  placeholder=" Store Phone Number"
                     />
 				
+                  </fieldset>
                   </div>
-             
-             
+				  </div>
+             <br>
            
-              <div class="row  mt-5" >
+              <div class="row" id ="homrow">
+				  <div class="col-md-12 align_self_center" >
+                      <fieldset>
 			 
                   <select name="city1" required>
                     <option disabled selected value>Store Address</option>
-                    <option>Nabatieh</option>
                     <option>Beirut</option>
-                    <option>Jbeil</option>
+					<option>Jounieh</option>
+					<option>Jbeil</option>
+					<option>Tripoli</option>
+					<option>Bekaa</option>
+					<option>Nabatieh</option>
                   </select>
                   <div class="select-dropdown"></div>
-                </div>
+				  
+               </fieldset>
+                  </div>
+				  </div>
 				
-		
-              <div class="row  mt-5">
-			  <div class="col-md-12 align_self_center" >
+		  <br>
+		  <br>
+              <div class="row" id ="homrow">
+				  <div class="col-md-12 align_self_center" >
                       <fieldset>
+                    
                 <button type="submit" id = "register">Register Your Store</button>
 				</fieldset>
               </div>
 			  </div>
             </form>
           </div>
+		  
         
 
    

@@ -77,23 +77,22 @@ https://www.tooplate.com/view/2114-pixie
 <h1 align="center" style="color: #1e8c6e;"> Login </h1>
 <br>
 
-   <div class="container">
-    <?php
+   <div class="container" align="center">
+           <p style="color:red">      <?php
                     if (!empty($_SESSION["flash"])){
                     $x = $_SESSION["flash"];
                     echo $x;
 					$_SESSION["flash"]="";
 					} 
                
-            ?>
-                <form id="subscribe" action="index1.php" method="POST">
+                  ?> </p>
+                <form id="login" action="index1.php" method="POST" >
                   <div class="row" id ="homrow">
 				  <div class="col-md-12 align_self_center" >
                       <fieldset>
-                        <input name="email" type="text" class="form-control" id="email" 
-                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }" 
-                    	onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                    	value="Your Email..." required="">
+					  <p id="hide11"></p>
+                        <input name="email" type="text" class="form-control" id="email1" 
+                         Placeholder = "Your Email.." required="">
                       </fieldset>
                     </div>
 					</div>
@@ -102,10 +101,8 @@ https://www.tooplate.com/view/2114-pixie
 					  <div class="row" id ="homrow">
 					<div class="col-md-12 align_self_center" >
                       <fieldset>
-                        <input name="password" type="text" class="form-control" id="pass" 
-                        onfocus="if(this.value == 'Password...') { this.value = ''; }" 
-                    	onBlur="if(this.value == '') { this.value = 'Password...';}"
-                    	value="Password..." required="">
+                        <input name="password" type="password" class="form-control" id="pass1" 
+                        Placeholder = "Your Password.." required="">
                       </fieldset>
                     </div>
 					</div>
@@ -132,7 +129,7 @@ https://www.tooplate.com/view/2114-pixie
           <div class="col-md-12">
             <div class="section-heading">
               <div class="line-dec"></div>
-              <h1>Dont have an account yet ? <a href ="signup.php"> Sign up here</a> </h1>
+              <h1>Don't have an account yet ? <a href ="signup.php"> Sign up here</a> </h1>
             </div>
           </div>
           <div class="col-md-8 offset-md-2">
@@ -145,6 +142,8 @@ https://www.tooplate.com/view/2114-pixie
     </div>
     <!-- Subscribe Form Ends Here -->
 
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript"src="script.js"></script>
 
     
     <!-- Footer Starts Here -->

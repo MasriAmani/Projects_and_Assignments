@@ -25,7 +25,7 @@ $row = $result->fetch_assoc();
 
 if(empty($row)){
 	session_start();
-	$_SESSION["flash"] = "Wrong email or password";
+	$_SESSION["flash"] = "Wrong Email or Password!";
 	header('location: index.php');
 }
 else{

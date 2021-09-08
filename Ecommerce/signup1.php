@@ -90,7 +90,7 @@ header('location:index.php');
 }
 else{
     session_start();
-    $_SESSION["flash"] = "Email already exists";
+    $_SESSION["flash"] = "Email Already Exists";
     header('location:signup.php');
 }
 ?>
