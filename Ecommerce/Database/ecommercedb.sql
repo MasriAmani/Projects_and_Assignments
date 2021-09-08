@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2021 at 08:57 AM
+-- Generation Time: Sep 08, 2021 at 01:55 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -20,6 +20,43 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecommercedb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_order`
+--
+
+CREATE TABLE `customer_order` (
+  `customer_id` int(11) NOT NULL,
+  `started` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_order`
+--
+
+INSERT INTO `customer_order` (`customer_id`, `started`) VALUES
+(11, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `payed` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `payed`) VALUES
+(11, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -52,13 +89,25 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `quantity`, `price
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchased`
+-- Table structure for table `products_orders`
 --
 
-CREATE TABLE `purchased` (
+CREATE TABLE `products_orders` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products_orders`
+--
+
+INSERT INTO `products_orders` (`id`, `order_id`, `product_id`, `quantity`) VALUES
+(12, 11, 12, 5),
+(13, 11, 13, 2),
+(14, 11, 14, 1),
+(15, 11, 15, 8);
 
 -- --------------------------------------------------------
 
@@ -110,11 +159,24 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `gender`, `phone_number`, 
 (6, 'Rami', 'Mrad', 0, '+96170258956', 'rami@hotmail.com', 'f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b', 'Nabatieh', 1),
 (7, 'Lana', 'wehbe', 1, '+96170258956', 'lana@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Nabatieh', 0),
 (8, 'Mohamad', 'Masri', 0, 'mnmn', 'mohamad@gmail.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Nabatieh', 0),
-(10, 'Sara', 'Mohsen', 1, '+96171365800', 'sara@gmail.com', '8588310a98676af6e22563c1559e1ae20f85950792bdcd0c8f334867c54581cd', 'Beirut', 1);
+(10, 'Sara', 'Mohsen', 1, '+96171365800', 'sara@gmail.com', '8588310a98676af6e22563c1559e1ae20f85950792bdcd0c8f334867c54581cd', 'Beirut', 1),
+(11, 'Rania', 'Yamout', 0, '+96170258956', 'rania@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Jounieh', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `customer_order`
+--
+ALTER TABLE `customer_order`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -123,10 +185,10 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `purchased`
+-- Indexes for table `products_orders`
 --
-ALTER TABLE `purchased`
-  ADD UNIQUE KEY `product_id` (`product_id`);
+ALTER TABLE `products_orders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `stores`
@@ -147,10 +209,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `customer_order`
+--
+ALTER TABLE `customer_order`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `products_orders`
+--
+ALTER TABLE `products_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `stores`
@@ -162,7 +242,7 @@ ALTER TABLE `stores`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
