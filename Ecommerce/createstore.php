@@ -83,18 +83,19 @@ session_start();
 <br>
 
    <div class="container" align="center">
-              <?php
+           <p style ="color:red">   <?php
                     if (!empty($_SESSION["flash"])){
                     $x = $_SESSION["flash"];
                     echo $x;
 					$_SESSION["flash"]="";
 					} 
                
-            ?>
+            ?> </p>
               <form id="createS" action="createstore1.php" method="POST" >
               <div class="row" id ="homrow">
 				  <div class="col-md-12 align_self_center" >
                       <fieldset>
+					<p id="hide21" ></p>
 				    <input
                       required
                       minlength="3"
@@ -111,7 +112,7 @@ session_start();
             <div class="row" id ="homrow">
 				  <div class="col-md-12 align_self_center" >
                       <fieldset>
-				
+				<p id="hide22" ></p>
                     <input
 
                       required
@@ -182,6 +183,10 @@ session_start();
         </div>
       </div>
     </div>
+	
+	
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript"src="script.js"></script>
     
     <!-- Footer Starts Here -->
     <div class="footer">

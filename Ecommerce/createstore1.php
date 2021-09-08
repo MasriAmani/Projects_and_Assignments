@@ -8,7 +8,7 @@ if(isset($_POST["store_name"]) && $_POST["store_name"] != "" && strlen($_POST["s
     die ("Enter a valid input");
 }
 
-if(isset($_POST["phone1"]) && $_POST["phone1"] != "" ) {
+if(isset($_POST["phone2"]) && $_POST["phone2"] != "" ) {
     $phone = $_POST["phone1"];
 }else{
     die ("Enter a valid input");
@@ -51,7 +51,7 @@ header('location:homestore.php');
 }
 else{
     session_start();
-    $_SESSION["flash"] = "Store name already exists";
+    $_SESSION["flash"] = "Store Name Already Exists";
     header('location:createstore.php');
 }
 ?>

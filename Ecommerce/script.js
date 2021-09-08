@@ -179,5 +179,56 @@ if ( !emailValid1 ) {
 });
 
 
+$("#register").click(function myFunction(e) {
+var SnameValid ;
+var phoneValid2 ;
+validateSname();
+validatePhone2 ();
+
+function validateSname(){
+  SnameValid = false;
+  if($("#store_name").val().length>2){
+    SnameValid = true;
+  }
 }
-);
+
+function validatePhone2() {
+  phoneValid2 = false;
+  $("#phone2").val().split(" ").join("");
+  if (
+    ($("#phone2").val().length == 12 || $("#phone2").val().length == 11) &&
+    $("#phone2").val().indexOf("+961") == 0
+  ) {
+    phoneValid2 = true;
+  }
+}
+
+if(!SnameValid){
+   $("#hide21").css("color", "red");
+    $("#hide21").html("Store Name Invalid (must be > 3 chars)");
+  }
+  else {
+	  $("#hide21").html("");
+  }
+ 
+if(!phoneValid2){
+   $("#hide22").css("color", "red");
+    $("#hide22").html("Invalid Phone Number");
+  }
+  else {
+	  $("#hide22").html("");
+  }
+ if ( !SnameValid || !phoneValid2 ) {
+  
+	 e.preventDefault();
+     e.stopPropagation();
+     e.stopImmediatePropagation();
+
+  return false;}
+});
+
+
+
+
+});
+
