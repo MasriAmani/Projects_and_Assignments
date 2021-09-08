@@ -87,6 +87,22 @@ https://www.tooplate.com/view/2114-pixie
             <div class="section-heading">
               <div class="line-dec"></div>
               <h1>Products </h1>
+			  
+			   <?php
+             include "connection.php";
+			 session_start();
+			  $custid = $_GET["custid"];
+			 $sql4 = "SELECT * FROM `customer_order` WHERE `customer_id`= $custid;"; //to see if the customer has started a cart
+             $stmt4 = $connection->prepare($sql4);
+             $stmt4->execute();
+             $result4 = $stmt4->get_result();
+             $row4 = $result4->fetch_assoc();
+              
+            if(!empty($row4) && $row4["started"]!= 0 ){
+				$id = $_SESSION['orderid'] ;
+				?>
+				
+                   <a href= <?php echo "ViewCart.php?orderid=".$id  ?> > View Cart </a>
             </div>
           </div>
          
@@ -96,11 +112,19 @@ https://www.tooplate.com/view/2114-pixie
     </div>
   
     <div class="featured container no-gutter">
-	
+	      
 	   <div class="row posts">
-	         <?php
-             include "connection.php";
+	   
+	        
+				  
+			<?php }
+			 
+			 
+			 
+			 
 			 $id = $_GET["id"];
+			 $_SESSION["storeid"]=$id;
+			 $custid = $_GET["custid"];
 			 $sql2 = "select * from products where store_id =$id;"; 
              $stmt2 = $connection->prepare($sql2);
              $stmt2->execute();
@@ -113,7 +137,7 @@ https://www.tooplate.com/view/2114-pixie
 					   $price = $row["price"];
 					  ?>
             <div id="1" class="item new col-md-4">
-			   <a href= <?php echo "single-product.php?id=".$id ?> >
+			   <a href= <?php echo "single-product.php?id=".$id ."&custid=".$custid ?> >
 						    
                 <div class="featured-item">
 				<?php 

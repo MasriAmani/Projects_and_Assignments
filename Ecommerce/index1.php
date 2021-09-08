@@ -35,6 +35,7 @@ else{
 	$_SESSION["gender"] = "Mr";
 	}else{$_SESSION["gender"] = "Ms";}
 	if($row["user_type"]==0){
+		$_SESSION["cust_id"]= $row["id"];
 		$_SESSION["type"] = "C";
 	header('location: homecust.php');}
 	 else{	

@@ -84,8 +84,7 @@ https://www.tooplate.com/view/2114-pixie
 				   include "connection.php";
                    session_start();
 				   $id =$_GET["id"];
-				   
-				    $sql1="Select * from products where id=?"; #Check if the store name already exists in the database
+				    $sql1="Select * from products where id=?"; 
                     $stmt1 = $connection->prepare($sql1);
                     $stmt1->bind_param("i",$id);
                     $stmt1->execute();

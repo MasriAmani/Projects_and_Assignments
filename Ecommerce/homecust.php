@@ -99,6 +99,8 @@ https://www.tooplate.com/view/2114-pixie
         <div class="row" >
 		   <?php
              include "connection.php";
+			 session_start();
+			 $custid= $_SESSION["cust_id"];
 			 $sql2 = "select * from stores;"; 
             $stmt2 = $connection->prepare($sql2);
             $stmt2->execute();
@@ -108,7 +110,7 @@ https://www.tooplate.com/view/2114-pixie
 		  <div class="col-md-4">
                 <div class="featured-item" id ="a">
                 <?php echo $row["name"]; ?>
-				<a href= <?php echo "product.php?id=".$row["id"]; ?>>
+				<a href= <?php echo "product.php?id=".$row["id"]."&custid=".$custid; ?>>
 				 --> Visit
 				 </a>
                 </div>

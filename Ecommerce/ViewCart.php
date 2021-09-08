@@ -94,8 +94,8 @@ session_start();
 				   <?php
 				   
                    include "connection.php";
-                    
-				            $sql="Select * from purchased ;";
+                              $orderid = $_GET["orderid"];
+				            $sql="Select * from products_orders where order_id =$orderid ;";
                              $stmt = $connection->prepare($sql);
 				             $stmt->execute();
                              $result = $stmt->get_result();
