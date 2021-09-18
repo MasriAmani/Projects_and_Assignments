@@ -31,7 +31,7 @@
 
 
 </head>
-<body  class="container-login100" style="background-image: url('images/bg-01.jpg');">
+<body  class="container">
 	
 	     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -73,7 +73,7 @@
     </div>
   </div>
 </div>
-		<div style="background-color: white ; width :95% ; height :90%; ">
+		<div style="background-color: white ; width :95% ; height :100%; ">
 		<h1>Expenses </h1>
 		<br>
 		<p id="session">  <?php
@@ -81,6 +81,8 @@
                     $x = $_SESSION["user_id"];
                     echo $x;
 					 ?></p>
+		 <div id="piechart">
+	     </div>
 		<div class="table-responsive">
 		 <table class="table" id ="myTable">
             <tr>
@@ -121,7 +123,8 @@
 	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
 <script>
              $( document ).ready(function() {
 				 
@@ -131,6 +134,8 @@
             $( function () {
                    $("#datepicker").datepicker();
             } );
+			
+			
  
 			async function fetchAPI(){
 				const response = await fetch('http://localhost/Expense_Tracker/display.php?id='+id);
@@ -146,20 +151,29 @@
 
 		  getData();
 		 function getData(){
-			fetchAPI().then(results => {
+			fetchAPI().then( results => {
 				for (i=0; i<results.length ;i++){
-			$('#myTable').append("<tr><td>"+results[i]["name"]+"</td><td>"+results[i]["amount"]+"</td><td>"+results[i]["date"]+"</td><td><i class='fa fa-pencil'></i></td><td><i class='fa fa-trash' id="+results[i]['id']+" value ="+results[i]['id']+"></i></td></tr>");
-			    var id = results[i]["id"];
-			  $("#"+id).click(function(){
-				 response = fetch('http://localhost/Expense_Tracker/delete.php?id='+results[i]["id"]);
-				 result = response.json();
-				 return result;
-				});
-				}
+			$('#myTable').append("<tr id='row_"+results[i]["id"]+"'><td>"+results[i]["name"]+"</td><td>"+results[i]["amount"]+"</td><td>"+results[i]["date"]+"</td><td><i class='fa fa-pencil' id='Edit_"+results[i]['id']+"'></i></td><td><button  type ='button' class='fa fa-trash delete' id='delete_"+results[i]['id']+"'></button></td></tr>");
+			
+			
+			}
+			
+			 $("#save").click(addExpense);
+			  $(".delete").click(function deleteExpense(event){
+		              deleteExpenseAPI(event).then(expense => {
+		               $("#row_"+event.target.id).hide();
+		                });
+	                 });
+			 
+			
 			}).catch(error => {
 				console.log(error.message);
 			});
+			
 		}
+	    
+		 
+		
        
 	    async function fetchAPI1(){
 				const response = await fetch('http://localhost/Expense_Tracker/categories.php?id='+id);
@@ -187,62 +201,110 @@
 		 
 		 
 		  
-		
-		
-		
-		
-		
-			 $("#save").click(async function(){
+		async function addExpenseAPI(){
 			 var date = $("#datepicker").val();
 			  var amount = $("#amount").val();
 			  var catg = $("#catg").val();
-			 
-			 
-              await $.ajax({
-					type: "POST",
-					url: "http://localhost/Expense_Tracker/addexpense.php?id="+id,
-					data: {
-						 date: date,
-			            amount: amount,
-			            catg :catg
-					},
-					cache:false,
-					success: function(data){
-						alert(data);
-					},
-				   error: function(xhr,status,error) {
-					   console.error(xhr);
-				   }
-			 
-			  });
-			  const response = await fetch('http://localhost/Expense_Tracker/addexpense.php');
+		const response = await fetch("http://localhost/Expense_Tracker/addexpense.php", {
+			method: 'POST',
+			body: new URLSearchParams({
+				 "id"  : id,
+				 "date": date,
+			     "amount": amount,
+			     "catg": catg
+			})
+		});
+		
+		if(!response.ok){
+			const message = "ERROR OCCURED";
+			throw new Error(message);
+		}
+		
+		const expense = await response.json();
+		return expense;
+		
+	}
+		
+		
+		function addExpense(){
+			
+		addExpenseAPI().then(expense => {
+			 $('#myTable').append("<tr id='row_"+expense.id+"'><td>"+expense.catg+"</td><td>"+expense.amount+"</td><td>"+expense.date+"</td><td><i class='fa fa-pencil' id='Edit_"+expense.id+"'></i></td><td><i class='fa fa-trash delete' id='delete_"+expense.id+"'></i></td></tr>");
+			  
+			
+		});
+	}
+	
+		
+		
+		
+		async function deleteExpenseAPI(event){
+		const response = await fetch("http://localhost/Expense_Tracker/delete.php?id="+event.target.id);
+		
+		if(!response.ok){
+			const message = "ERROR OCCURED";
+			throw new Error(message);
+		}
+		
+		const expense = await response.json();
+		return expense;
+	}
+	
+	
+	
+	
+	
+	async function fetchpiechart(){
+				const response = await fetch('http://localhost/Expense_Tracker/piechart.php');
 				if(!response.ok){
 					const message = "An Error has occured";
 					throw new Error(message);
 				}
 				
+				
 				const results = await response.json();
 				return results; 
-			
+			}
 			
 
-		getData1();
-		 function getData(){
-			fetchAPI().then(results => {
-				for (i=0; i<results.length ;i++){
-			$('#myTable').append("<tr><td>"+results[i]["name"]+"</td><td>"+results[i]["amount"]+"</td><td>"+results[i]["date"]+"</td><td><i class='fa fa-pencil'></i></td><td><i class='fa fa-trash' id="+results[i]['id']+" value ="+results[i]['id']+"></i></td></tr>");
-			 
-				}
-			}).catch(error => {
-				console.log(error.message);
-			});
-		}
-			  
-			  
-		    
-		   
-			  });
-	   
+		getpie();
+		 function getpie(){
+			fetchpiechart().then(results => {
+				
+				res = results;
+				var array = "";
+				for (var i=0 ; i<(res.length);i++){
+				 array += "["+res[i]["name"]+","+res[i]["s"]+"],"
+					}
+				 
+                function drawChart() {
+					console.log(array);
+                
+             var data = google.visualization.arrayToDataTable([
+			        //"['Category','Expenses'],"+array
+					['Category','Expenses'],
+					[res[0]["name"],res[0]["s"]],
+					[res[1]["name"],res[1]["s"]],
+					[res[2]["name"],res[2]["s"]]
+					
+					
+          
+        ]);
+				
+			
+        var options = {
+          title: 'Your Expenses'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+	 	 google.charts.load('current', {'packages':['corechart']});
+         google.charts.setOnLoadCallback(drawChart);
+
+		});
+		 }	
 	    });
 
 </script>
